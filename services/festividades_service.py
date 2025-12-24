@@ -22,6 +22,8 @@ FESTIVIDADES_SQL = text(
     cli_telefone AS CELULAR
  FROM clientes
  WHERE clientes.cli_status = 'Ativo'
+ AND clientes.cli_telefone IS NOT NULL 
+ AND clientes.cli_telefone != ''
     """
 )
 
