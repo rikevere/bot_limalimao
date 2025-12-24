@@ -1,30 +1,23 @@
-# coopervere/scripts/run_notifier.py
+# notificador_bot/scripts/run_notifier.py
 
 import os
 import time
 from datetime import datetime, date, time as dt_time
 import sys, pathlib
+
 sys.path.append(str(pathlib.Path(__file__).resolve().parents[1]))
 
 from dotenv import load_dotenv
+load_dotenv()  # <-- ANTES de importar services
 
-# Serviços existentes
-#from services.notifier_service import processar_pedidos_pendentes
-#from services.danfe_service import processar_notas_pendentes
 from services.aniversario_service import processar_aniversariantes
-
-# Novo serviço semanal
-#from services.pagar_service import processar_contas_pagar
-
+from services.cobranca_service import processar_cobrancas
 from services.festividades_service import processar_festividades
 
 from services.state_manager import (
     load_ultima_execucao_semana,
     save_ultima_execucao_semana,
 )
-
-
-load_dotenv()
 
 
 def should_run_weekly(hoje: date, agora: datetime, ultima_execucao: date) -> bool:
@@ -124,6 +117,15 @@ def main():
                 print(f"[Notifier {agora}] Festividades ({tipo_festividade}) => {res_fest}")
         except Exception as e:
             print(f"[Notifier {agora}][ERRO Festividades] {e}")
+
+        # --------------------------------------------------------
+        # 2.3) PROCESSA COBRANÇAS (DUPLICATAS)
+        # --------------------------------------------------------
+        #try:
+        #    res_cobr = processar_cobrancas()
+        #    print(f"[Notifier {agora}] Cobranças => {res_cobr}")
+        #except Exception as e:
+        #    print(f"[Notifier {agora}][ERRO Cobranças] {e}")
 
         # --------------------------------------------------------
         # 3) PROCESSO SEMANAL — CONTAS A PAGAR

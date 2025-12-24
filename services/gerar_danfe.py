@@ -69,7 +69,7 @@ def gerar_danfe(xml) -> None:
     # 🖼 LOGO (opcional)
     # Se o caminho do logo foi informado, atribui na configuração.
     # A lib aceita também bytes/BytesIO, mas aqui usamos apenas o caminho.
-    config.logo = 'C:/BotCop/coopervere/services/logo-coopervere.png'  
+    config.logo = 'C:/BotCop/coopervere/services/LogoLima.png'  
 
     # 💰 EXIBIR PIS/COFINS NOS TOTAIS
     # True  -> mostra PIS e COFINS

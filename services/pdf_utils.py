@@ -125,7 +125,7 @@ def build_pedido_pdf(dados: dict) -> tuple[str, str]:
     # Logo (opcional) no canto superior direito
     # Recomendação: 30x20 mm (~300x200 px), PNG com fundo transparente.
     LOGO_W, LOGO_H = 30 * mm, 20 * mm
-    logo_path = os.path.join(os.path.dirname(__file__), "logo-coopervere.png")
+    logo_path = os.path.join(os.path.dirname(__file__), "LogoLima.png")
     if os.path.exists(logo_path):
         c.drawImage(
             logo_path,
