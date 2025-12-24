@@ -1,4 +1,4 @@
-# notificador_bot/scripts/run_notifier.py
+#notificador_bot/scripts/run_notifier.py
 
 import os
 import time
